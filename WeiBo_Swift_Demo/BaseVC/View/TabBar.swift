@@ -8,10 +8,17 @@
 
 import UIKit
 
+public protocol TabBarDelegate: NSObjectProtocol {
+    
+    func clickPlusButton()
+}
+
+
+
 class TabBar: UITabBar {
     
     var plusBtn:UIButton?
-    
+    var tabBarDelegate: TabBarDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -33,13 +40,12 @@ class TabBar: UITabBar {
         
     }
     
-    
-    
-    
+        
     func clickPlusBtn() {
         
+        tabBarDelegate?.clickPlusButton()
+        
     }
-    
     
     
     override func layoutSubviews() {

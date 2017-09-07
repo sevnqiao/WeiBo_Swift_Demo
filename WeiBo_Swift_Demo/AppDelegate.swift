@@ -21,7 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabVC:BaseTabBarController = BaseTabBarController.init()
         
-        window?.rootViewController = tabVC
+        
+        if let _:AccountInfo = AccountInfoTool.accountInfo()
+        {
+            window?.rootViewController = tabVC
+        }
+        else // 账号过期
+        {
+            window?.rootViewController = OAuthViewController.init()
+        }
         
         window?.makeKeyAndVisible()
         

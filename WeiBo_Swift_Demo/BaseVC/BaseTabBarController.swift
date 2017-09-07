@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseTabBarController: UITabBarController {
+class BaseTabBarController: UITabBarController, TabBarDelegate {
 
     override func viewDidLoad() {
         
@@ -18,6 +18,7 @@ class BaseTabBarController: UITabBarController {
         
         
         let tabBar:TabBar = TabBar.init()
+        tabBar.tabBarDelegate = self
         self.setValue(tabBar, forKey: "tabBar")
         
     }
@@ -48,4 +49,9 @@ class BaseTabBarController: UITabBarController {
         self.addChildViewController(nav)
     }
     
+    
+    func clickPlusButton() {
+        
+        print("click plus btn")
+    }
 }

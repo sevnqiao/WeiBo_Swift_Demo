@@ -1,0 +1,12 @@
+use_frameworks!
+
+platform:ios, '8.0'
+
+target 'WeiBo_Swift_Demo' do
+
+pod 'Alamofire'
+pod 'AlamofireImage'
+pod 'SwiftyJSON'
+
+
+end
