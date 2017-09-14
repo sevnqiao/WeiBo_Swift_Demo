@@ -20,6 +20,12 @@
 		C8301EBB1F5FEBA000CC2477 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8301EB31F5FEBA000CC2477 /* MineViewController.swift */; };
 		C8301EBD1F5FEBCC00CC2477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8301EBC1F5FEBCC00CC2477 /* AppDelegate.swift */; };
 		C8457A6A1F61121E00DE47FB /* WBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8457A691F61121E00DE47FB /* WBRequest.swift */; };
+		C8457A6D1F613CB000DE47FB /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8457A6C1F613CB000DE47FB /* AppConfig.swift */; };
+		C8457A701F613EDE00DE47FB /* BlogDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8457A6F1F613EDE00DE47FB /* BlogDetailModel.swift */; };
+		C8457A721F613F0F00DE47FB /* BlogListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8457A711F613F0F00DE47FB /* BlogListTableViewCell.swift */; };
+		C8457A741F614BE300DE47FB /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8457A731F614BE300DE47FB /* UserInfoModel.swift */; };
+		C8457A761F614CDC00DE47FB /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8457A751F614CDC00DE47FB /* AppServices.swift */; };
+		C883B5821F6A2F490055B7C4 /* BlogImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C883B5811F6A2F490055B7C4 /* BlogImageView.swift */; };
 		C89640AE1F5FF424003B5BBC /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89640AD1F5FF424003B5BBC /* OAuthViewController.swift */; };
 		C89640B11F5FF478003B5BBC /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89640B01F5FF478003B5BBC /* AccountInfo.swift */; };
 		C89640B31F5FFA1D003B5BBC /* AccountInfoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89640B21F5FFA1D003B5BBC /* AccountInfoTool.swift */; };
@@ -43,6 +49,12 @@
 		C8301EB31F5FEBA000CC2477 /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		C8301EBC1F5FEBCC00CC2477 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8457A691F61121E00DE47FB /* WBRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRequest.swift; sourceTree = "<group>"; };
+		C8457A6C1F613CB000DE47FB /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		C8457A6F1F613EDE00DE47FB /* BlogDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogDetailModel.swift; sourceTree = "<group>"; };
+		C8457A711F613F0F00DE47FB /* BlogListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogListTableViewCell.swift; sourceTree = "<group>"; };
+		C8457A731F614BE300DE47FB /* UserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		C8457A751F614CDC00DE47FB /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
+		C883B5811F6A2F490055B7C4 /* BlogImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogImageView.swift; sourceTree = "<group>"; };
 		C89640AD1F5FF424003B5BBC /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		C89640B01F5FF478003B5BBC /* AccountInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
 		C89640B21F5FFA1D003B5BBC /* AccountInfoTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfoTool.swift; sourceTree = "<group>"; };
@@ -107,6 +119,8 @@
 				C8301EB01F5FEBA000CC2477 /* Message */,
 				C8301EB21F5FEBA000CC2477 /* My */,
 				C8301EBC1F5FEBCC00CC2477 /* AppDelegate.swift */,
+				C8457A6C1F613CB000DE47FB /* AppConfig.swift */,
+				C8457A751F614CDC00DE47FB /* AppServices.swift */,
 				C8301E9B1F5FEB5700CC2477 /* Assets.xcassets */,
 				C8301E9D1F5FEB5700CC2477 /* LaunchScreen.storyboard */,
 				C8301EA01F5FEB5700CC2477 /* Info.plist */,
@@ -145,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				C8301EAF1F5FEBA000CC2477 /* HomeViewController.swift */,
+				C8457A6F1F613EDE00DE47FB /* BlogDetailModel.swift */,
+				C8457A6E1F613E3E00DE47FB /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -173,6 +189,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		C8457A6E1F613E3E00DE47FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8457A711F613F0F00DE47FB /* BlogListTableViewCell.swift */,
+				C883B5811F6A2F490055B7C4 /* BlogImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C89640AC1F5FF409003B5BBC /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +211,7 @@
 			children = (
 				C89640B01F5FF478003B5BBC /* AccountInfo.swift */,
 				C89640B21F5FFA1D003B5BBC /* AccountInfoTool.swift */,
+				C8457A731F614BE300DE47FB /* UserInfoModel.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -316,14 +342,20 @@
 				C8301EB61F5FEBA000CC2477 /* BaseViewController.swift in Sources */,
 				C8457A6A1F61121E00DE47FB /* WBRequest.swift in Sources */,
 				C8301EBA1F5FEBA000CC2477 /* MessageViewController.swift in Sources */,
+				C883B5821F6A2F490055B7C4 /* BlogImageView.swift in Sources */,
 				C8301EB51F5FEBA000CC2477 /* BaseTabBarController.swift in Sources */,
+				C8457A741F614BE300DE47FB /* UserInfoModel.swift in Sources */,
 				C8301EBD1F5FEBCC00CC2477 /* AppDelegate.swift in Sources */,
 				C89640AE1F5FF424003B5BBC /* OAuthViewController.swift in Sources */,
 				C8301EB81F5FEBA000CC2477 /* DiscoverViewController.swift in Sources */,
 				C8301EB91F5FEBA000CC2477 /* HomeViewController.swift in Sources */,
 				C89640B11F5FF478003B5BBC /* AccountInfo.swift in Sources */,
+				C8457A721F613F0F00DE47FB /* BlogListTableViewCell.swift in Sources */,
+				C8457A6D1F613CB000DE47FB /* AppConfig.swift in Sources */,
 				C8301EB71F5FEBA000CC2477 /* TabBar.swift in Sources */,
+				C8457A701F613EDE00DE47FB /* BlogDetailModel.swift in Sources */,
 				C8301EB41F5FEBA000CC2477 /* BaseNavigationController.swift in Sources */,
+				C8457A761F614CDC00DE47FB /* AppServices.swift in Sources */,
 				C8301EBB1F5FEBA000CC2477 /* MineViewController.swift in Sources */,
 				C89640B31F5FFA1D003B5BBC /* AccountInfoTool.swift in Sources */,
 			);
@@ -445,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 69H7QSB2RS;
 				INFOPLIST_FILE = WeiBo_Swift_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Xiong.WeiBo-Swift-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -459,6 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 69H7QSB2RS;
 				INFOPLIST_FILE = WeiBo_Swift_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Xiong.WeiBo-Swift-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

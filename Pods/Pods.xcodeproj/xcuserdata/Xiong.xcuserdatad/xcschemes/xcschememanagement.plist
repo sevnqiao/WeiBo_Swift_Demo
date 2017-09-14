@@ -14,12 +14,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-WeiBo_Swift_Demo.xcscheme</key>
+		<key>HandyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>Pods-WeiBo_Swift_Demo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,12 +27,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>10F36C0F462474920CCFA53FA6DF7988</key>
+		<key>2771B241FCE337E606D5617826A23443</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6278D6DF5506878393A52012A094B4B4</key>
+		<key>3053B0D9A1A6C1FEAF5A169B975A414C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

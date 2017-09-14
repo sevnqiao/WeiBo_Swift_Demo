@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class OAuthViewController: BaseViewController, UIWebViewDelegate {
 
@@ -19,7 +18,7 @@ class OAuthViewController: BaseViewController, UIWebViewDelegate {
         webView.delegate = self
         view.addSubview(webView)
         
-        let urlStr:String = "https://api.weibo.com/oauth2/authorize?client_id=" + "698065407" + "&redirect_uri=" + "http://www.sina.com"
+        let urlStr:String = "https://api.weibo.com/oauth2/authorize?client_id=" + app_client_id + "&redirect_uri=" + app_redirect_uri
         let url:URL = URL.init(string: urlStr)!
         webView.loadRequest(URLRequest.init(url: url))
         
@@ -39,6 +38,8 @@ class OAuthViewController: BaseViewController, UIWebViewDelegate {
             let str = urlStr.substring(from: fromIndex)
             
             self.accessTokenWithCode(code: str)
+            
+            return false
         }
 
         return true
@@ -48,25 +49,20 @@ class OAuthViewController: BaseViewController, UIWebViewDelegate {
     func accessTokenWithCode(code:String) {
         
         var dict:Dictionary<String, String> = Dictionary()
-        dict["client_id"] = "698065407";
-        dict["client_secret"] = "d1766db5d5bf7cd84752236a179f299b";
-        dict["grant_type"] = "authorization_code";
-        dict["code"] = code;
-        dict["redirect_uri"] = "http://www.sina.com";
+        dict["client_id"] = app_client_id
+        dict["client_secret"] = app_client_secret
+        dict["grant_type"] = "authorization_code"
+        dict["code"] = code
+        dict["redirect_uri"] = app_redirect_uri
         
-        WBRequest.sharedInstance.sendRequestWith(type: .POST, url: "oauth2/access_token", parameters: dict) { (response) in
+        WBRequest.sharedInstance.sendRequestWith(type: .POST, url: url_access_token, parameters: dict) { (response) in
             
-//            let jsonData:Data = response.data(using: .utf8)!
-            
-//            let dict2 = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
-            
-            let accountInfo = AccountInfo.accountWithDict(jsonString: response)
+            let accountInfo:AccountInfo = AccountInfo.deserialize(from: response)!
+            accountInfo.create_time = Date()
             
             AccountInfoTool.saveAccountInfo(accountInfo: accountInfo)
             
+            UIApplication.shared.keyWindow?.rootViewController = BaseTabBarController.init()
         }
-        
-        
     }
-
 }

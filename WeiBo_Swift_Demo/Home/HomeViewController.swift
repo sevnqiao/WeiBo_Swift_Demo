@@ -7,40 +7,101 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableView:UITableView?
+    var refreshControl:UIRefreshControl?
+    
+    var dataSourceArray:Array<BlogDetailModel> = Array()
     
     override func viewDidLoad() {
         
-        tableView = UITableView.init(frame: view.bounds, style: UITableViewStyle.grouped)
+        tableView = UITableView.init(frame: view.bounds, style: UITableViewStyle.plain)
         tableView?.delegate = self
         tableView?.dataSource = self
-        tableView?.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableviewCellReusable")
         view.addSubview(tableView!)
+        
+        refreshControl = UIRefreshControl.init()
+        refreshControl?.addTarget(self, action: #selector(headerRefresh), for: UIControlEvents.valueChanged)
+        tableView?.addSubview(refreshControl!)
+        
+    }
+    
+    func headerRefresh() {
+        
+        self.loadData(isHeaderRefresh: true)
     }
     
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+// MARK: - UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if dataSourceArray.isEmpty == false {
+            return dataSourceArray.count
+        }
+        return 0
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let model:BlogDetailModel = dataSourceArray[indexPath.row]
+        return BlogListTableViewCell.cellHeight(blogDetailModel:model)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "UITableviewCellReusable", for: indexPath)
+        let cell:BlogListTableViewCell = BlogListTableViewCell.setupCell(tableView: tableView)
         
+        let model:BlogDetailModel = dataSourceArray[indexPath.row]
         
-
-        
+        cell.configCell(blogDetailModel: model)
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == self.dataSourceArray.count - 2 {
+            
+            self.loadData(isHeaderRefresh: false)
+        }
+        
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    
+    func loadData(isHeaderRefresh:Bool)  {
+        
+        var param:Dictionary<String, Any> = Dictionary()
+        if self.dataSourceArray.count > 0 {
+            if isHeaderRefresh {
+                let model:BlogDetailModel = (self.dataSourceArray.first)!
+                param["since_id"] = model.idstr
+            }else {
+                let model:BlogDetailModel = (self.dataSourceArray.last)!
+                param["max_id"] = model.idstr
+            }
+        }
+        
+        
+        WBRequest.sharedInstance.sendRequestWith(type: .GET, url: url_statuses, parameters: param) { (response) in
+            
+                if let object = [BlogDetailModel].deserialize(from: response, designatedPath: "statuses") {
+                    
+                    self.dataSourceArray.append(contentsOf: (object as? Array<BlogDetailModel>)!)
+                    
+                    self.refreshControl?.endRefreshing()
+                    self.tableView?.reloadData()
+                }
+        
+        }
+    }
 
 }

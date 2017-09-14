@@ -27,9 +27,13 @@ class WBRequest: NSObject {
         
         let method = type == .GET ? HTTPMethod.get : HTTPMethod.post
         
-        let urlStr = "https://api.weibo.com/" + url
+        let urlStr = url_host + url
         
-        Alamofire.request(urlStr, method: method, parameters: parameters).responseString { (response) in
+        var param = parameters
+        
+        param["access_token"] = AccountInfoTool.accountInfo()?.access_token
+        
+        Alamofire.request(urlStr, method: method, parameters: param).responseString { (response) in
             
             switch response.result {
                 

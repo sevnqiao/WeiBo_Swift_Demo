@@ -6,7 +6,7 @@ target 'WeiBo_Swift_Demo' do
 
 pod 'Alamofire'
 pod 'AlamofireImage'
-pod 'SwiftyJSON'
+pod 'HandyJSON'
 
 
 end

@@ -12,29 +12,31 @@
 import UIKit
 
 class AccountInfoTool: NSObject {
-
-    
-    
     
     class func saveAccountInfo(accountInfo:AccountInfo) {
         
-        let AccountPath:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!.appending("/account.archiver")
+        UserDefaults.standard.set(accountInfo.access_token, forKey: "access_token")
+        UserDefaults.standard.set(accountInfo.expires_in, forKey: "expires_in")
+        UserDefaults.standard.set(accountInfo.remind_in, forKey: "remind_in")
+        UserDefaults.standard.set(accountInfo.uid, forKey: "uid")
+        UserDefaults.standard.set(accountInfo.create_time, forKey: "create_time")
         
-        NSKeyedArchiver.archiveRootObject(accountInfo, toFile: AccountPath)
     }
     
     class func accountInfo() -> AccountInfo? {
         
-        let AccountPath:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!.appending("/account.archiver")
-        
-        let fileManager = FileManager.default
-        
-        if fileManager.fileExists(atPath: AccountPath) == false {
-            
+    
+        let access_token:String? = UserDefaults.standard.object(forKey: "access_token") as? String
+        if access_token == nil || (access_token?.isEmpty)! {
             return nil
         }
         
-        let accountInfo:AccountInfo = NSKeyedUnarchiver.unarchiveObject(withFile: AccountPath) as! AccountInfo
+        let accountInfo:AccountInfo = AccountInfo()
+        accountInfo.access_token = UserDefaults.standard.object(forKey: "access_token") as? String
+        accountInfo.expires_in = UserDefaults.standard.object(forKey: "expires_in") as? String
+        accountInfo.remind_in = UserDefaults.standard.object(forKey: "remind_in") as? String
+        accountInfo.uid = UserDefaults.standard.object(forKey: "uid") as? String
+        accountInfo.create_time = UserDefaults.standard.object(forKey: "create_time") as? Date
         
         let expire_in:TimeInterval = TimeInterval(accountInfo.expires_in!)!
         let expire_date:Date = Date.init(timeInterval: expire_in, since: accountInfo.create_time!)
