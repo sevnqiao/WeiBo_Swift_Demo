@@ -17,12 +17,15 @@ class BlogImageView: UIView {
         
         super.init(frame: frame)
         
-        scrollView.frame = frame
+        self.isUserInteractionEnabled = false
+        
+        scrollView.frame = CGRect.init(x: 0, y: 0, width: frame.width, height: frame.height)
         scrollView.clipsToBounds = true
         scrollView.isScrollEnabled = false
         self.addSubview(scrollView)
         
         imageView.clipsToBounds = true
+        imageView.contentMode = UIViewContentMode.scaleToFill
         scrollView.addSubview(imageView)
     }
     
@@ -30,15 +33,26 @@ class BlogImageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func setImage(url: String, placeholderImage:String) {
+    public func setImage(url: String, placeholderImage:String, isBig:Bool) {
 
-        let urlStr = url.replacingOccurrences(of: "thumbnail", with: "bmiddle")
+        var urlStr = url.replacingOccurrences(of: "thumbnail", with: "bmiddle")
+        
+        if isBig {
+            
+            
+            imageView.af_setImage(withURL: URL(string: urlStr)!)
+            
+            urlStr = url.replacingOccurrences(of: "thumbnail", with: "large")
+            
+        }
+        
+        
         imageView.af_setImage(withURL: URL(string: urlStr)!,
-                         placeholderImage: UIImage(named:placeholderImage),
+                              placeholderImage: UIImage(named:placeholderImage),
                          filter: nil,
                          progress: nil,
                          progressQueue: DispatchQueue.main,
-                         imageTransition: .crossDissolve(0.2),
+                         imageTransition: .noTransition,
                          runImageTransitionIfCached: true) { (data) in
                             
                             self.imageView.image = data.value

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B99AAF00EB3BDD8A31328F2 /* Pods_WeiBo_Swift_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D93B1929DAD76A2768614 /* Pods_WeiBo_Swift_Demo.framework */; };
+		C82849C51F6BB5F0001A5B69 /* BlogImageBroweView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82849C41F6BB5F0001A5B69 /* BlogImageBroweView.swift */; };
 		C8301E9C1F5FEB5700CC2477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8301E9B1F5FEB5700CC2477 /* Assets.xcassets */; };
 		C8301E9F1F5FEB5700CC2477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8301E9D1F5FEB5700CC2477 /* LaunchScreen.storyboard */; };
 		C8301EB41F5FEBA000CC2477 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8301EA71F5FEBA000CC2477 /* BaseNavigationController.swift */; };
@@ -29,12 +30,15 @@
 		C89640AE1F5FF424003B5BBC /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89640AD1F5FF424003B5BBC /* OAuthViewController.swift */; };
 		C89640B11F5FF478003B5BBC /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89640B01F5FF478003B5BBC /* AccountInfo.swift */; };
 		C89640B31F5FFA1D003B5BBC /* AccountInfoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89640B21F5FFA1D003B5BBC /* AccountInfoTool.swift */; };
+		C8D64E3B1F72011700D4D902 /* BlogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D64E3A1F72011700D4D902 /* BlogDetailViewController.swift */; };
+		C8D64E3D1F7201EB00D4D902 /* BlogCommentToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D64E3C1F7201EB00D4D902 /* BlogCommentToolView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F6D93B1929DAD76A2768614 /* Pods_WeiBo_Swift_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeiBo_Swift_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC669AD0550B38A301CA889 /* Pods-WeiBo_Swift_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo_Swift_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo_Swift_Demo/Pods-WeiBo_Swift_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		BDF3EF29E2FEE1664800FFE5 /* Pods-WeiBo_Swift_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo_Swift_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo_Swift_Demo/Pods-WeiBo_Swift_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		C82849C41F6BB5F0001A5B69 /* BlogImageBroweView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogImageBroweView.swift; sourceTree = "<group>"; };
 		C8301E911F5FEB5700CC2477 /* WeiBo_Swift_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo_Swift_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8301E9B1F5FEB5700CC2477 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8301E9E1F5FEB5700CC2477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		C89640AD1F5FF424003B5BBC /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		C89640B01F5FF478003B5BBC /* AccountInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
 		C89640B21F5FFA1D003B5BBC /* AccountInfoTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfoTool.swift; sourceTree = "<group>"; };
+		C8D64E3A1F72011700D4D902 /* BlogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogDetailViewController.swift; sourceTree = "<group>"; };
+		C8D64E3C1F7201EB00D4D902 /* BlogCommentToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCommentToolView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				C8301EAF1F5FEBA000CC2477 /* HomeViewController.swift */,
+				C8D64E3A1F72011700D4D902 /* BlogDetailViewController.swift */,
 				C8457A6F1F613EDE00DE47FB /* BlogDetailModel.swift */,
 				C8457A6E1F613E3E00DE47FB /* View */,
 			);
@@ -194,6 +201,8 @@
 			children = (
 				C8457A711F613F0F00DE47FB /* BlogListTableViewCell.swift */,
 				C883B5811F6A2F490055B7C4 /* BlogImageView.swift */,
+				C8D64E3C1F7201EB00D4D902 /* BlogCommentToolView.swift */,
+				C82849C41F6BB5F0001A5B69 /* BlogImageBroweView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,12 +354,15 @@
 				C883B5821F6A2F490055B7C4 /* BlogImageView.swift in Sources */,
 				C8301EB51F5FEBA000CC2477 /* BaseTabBarController.swift in Sources */,
 				C8457A741F614BE300DE47FB /* UserInfoModel.swift in Sources */,
+				C8D64E3D1F7201EB00D4D902 /* BlogCommentToolView.swift in Sources */,
 				C8301EBD1F5FEBCC00CC2477 /* AppDelegate.swift in Sources */,
 				C89640AE1F5FF424003B5BBC /* OAuthViewController.swift in Sources */,
 				C8301EB81F5FEBA000CC2477 /* DiscoverViewController.swift in Sources */,
 				C8301EB91F5FEBA000CC2477 /* HomeViewController.swift in Sources */,
+				C8D64E3B1F72011700D4D902 /* BlogDetailViewController.swift in Sources */,
 				C89640B11F5FF478003B5BBC /* AccountInfo.swift in Sources */,
 				C8457A721F613F0F00DE47FB /* BlogListTableViewCell.swift in Sources */,
+				C82849C51F6BB5F0001A5B69 /* BlogImageBroweView.swift in Sources */,
 				C8457A6D1F613CB000DE47FB /* AppConfig.swift in Sources */,
 				C8301EB71F5FEBA000CC2477 /* TabBar.swift in Sources */,
 				C8457A701F613EDE00DE47FB /* BlogDetailModel.swift in Sources */,

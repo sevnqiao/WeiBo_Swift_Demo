@@ -18,6 +18,8 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     var dataSourceArray:Array<BlogDetailModel> = Array()
     
     override func viewDidLoad() {
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named:"navigationbar_pop_highlighted")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: UIBarButtonItemStyle.done, target: self, action: #selector(clickRightBarItem))
         
         tableView = UITableView.init(frame: view.bounds, style: UITableViewStyle.plain)
         tableView?.delegate = self
@@ -27,6 +29,11 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         refreshControl = UIRefreshControl.init()
         refreshControl?.addTarget(self, action: #selector(headerRefresh), for: UIControlEvents.valueChanged)
         tableView?.addSubview(refreshControl!)
+        
+    }
+    
+    func clickRightBarItem() {
+        
         
     }
     
@@ -56,7 +63,34 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         let model:BlogDetailModel = dataSourceArray[indexPath.row]
         
-        cell.configCell(blogDetailModel: model)
+        cell.configCell(blogDetailModel: model, indexPath:indexPath)
+        
+        cell.handleSelectPicture = { (_ imageView:BlogImageView, _ pic_urls:Array<pic_url>, _ indexPath:IndexPath) ->() in
+            
+            let browseView:BlogImageBroweView = BlogImageBroweView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
+            browseView.isHidden = true
+            browseView.showInView(view: UIApplication.shared.keyWindow!, pic_urls: pic_urls)
+            
+            
+            let blogCell:BlogListTableViewCell = tableView.cellForRow(at: indexPath) as! BlogListTableViewCell
+            
+            let coverRect:CGRect = blogCell.imageCollectionView!.convert(imageView.frame, to: UIApplication.shared.keyWindow)
+            let tempImageView:UIImageView = UIImageView.init(frame: coverRect)
+            tempImageView.image = imageView.imageView.image
+            UIApplication.shared.keyWindow?.addSubview(tempImageView)
+            
+            UIView.animate(withDuration: 0.25, animations: { 
+                tempImageView.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
+            }, completion: { (Bool) in
+                tempImageView.isHidden = true
+                browseView.isHidden = false
+            })
+            
+            
+            
+
+            
+        }
         
         return cell
     }
@@ -73,6 +107,13 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        
+        let model:BlogDetailModel = dataSourceArray[indexPath.row]
+        
+        print(model.created_at)
+        
     }
     
     
@@ -89,7 +130,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 param["max_id"] = model.idstr
             }
         }
-        
         
         WBRequest.sharedInstance.sendRequestWith(type: .GET, url: url_statuses, parameters: param) { (response) in
             

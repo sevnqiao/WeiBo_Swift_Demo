@@ -46,6 +46,8 @@ class UserInfoModel: HandyJSON {
     var online_status:Int?
     var bi_followers_count:Int?
     var lang:String?
+    var mbtype:Int?
+    
     
     required init(){}
     
